@@ -25,8 +25,11 @@
 	</c:if>
 	
 	<c:if test="${president != null}">
-		<img src="&quot${president.imageUrl}&quot" alt="Image of president"/>
-		${president.info}
+		<img src="${president.url}" alt="Image of president"/>
+		<ul>
+		<li>Name: ${president.name}</li>
+		<%-- <li>${president.name}</li> --%>
+		</ul>
 		</c:if>
 		
 	<c:if test="${president.termNumber != 45}">
