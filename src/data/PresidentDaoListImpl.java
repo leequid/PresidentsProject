@@ -49,13 +49,16 @@ public class PresidentDaoListImpl implements PresidentDao {
 	}
 	
 	public void loadPresident(ServletContext context){
-		InputStream is = context.getResourceAsStream("presidents.tsv");
+		InputStream is = context.getResourceAsStream("/WEB-INF/presidents.tsv");
+		System.out.println("test");
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-			String record = reader.readLine(); // Read and discard header line
+			System.out.println("test");
+			String record; // Read and discard header line
 			while ((record = reader.readLine()) != null) {
-				String[] col = record.split(",");
+				String[] col = record.split("\t");
 				int termnum = Integer.parseInt(col[0]);
 				President i = new President(termnum,col[1],col[2],col[3],col[4],col[5],col[6],col[7],col[8],col[9],col[10]);
+				System.out.println(i);
 				presList.add(i);
 			}
 		}
