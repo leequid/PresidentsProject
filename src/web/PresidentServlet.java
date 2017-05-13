@@ -27,6 +27,9 @@ public class PresidentServlet extends HttpServlet {
 	String previous = request.getParameter("previous");
 	String next = request.getParameter("next");
 	String submit = request.getParameter("submit");
+	System.out.println(next);
+	System.out.println(submit);
+	System.out.println(previous);
 	int termNumber = Integer.parseInt(request.getParameter("termNumber"));
 	//if they clicked next, next will have a value
 	List <President> pres = dao.getAllPresidents();
