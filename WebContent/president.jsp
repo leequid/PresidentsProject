@@ -27,7 +27,7 @@
 	<c:if test="${president != null}">
 		<img src="${president.url}" alt="Image of president"/>
 		<ul>
-		<li>Name: ${president.name}</li>
+		<li>Name: ${president.lastName}</li>
 		<%-- <li>${president.name}</li> --%>
 		</ul>
 		</c:if>

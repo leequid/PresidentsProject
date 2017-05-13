@@ -57,9 +57,6 @@ public class PresidentDaoListImpl implements PresidentDao {
 			while ((record = reader.readLine()) != null) {
 				String[] col = record.split("\\|");
 				int termnum = Integer.parseInt(col[0]);
-				for (int i = 0; i<col.length; i++) {
-					System.out.println(i + " " + col[i]);
-				}
 				President i = new President(termnum,col[1],col[2],col[3],col[4],col[5],col[6],col[7],col[8],col[9],col[10]);
 //				System.out.println(i);
 				presList.add(i);

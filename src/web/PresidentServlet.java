@@ -31,17 +31,20 @@ public class PresidentServlet extends HttpServlet {
 	//if they clicked next, next will have a value
 	List <President> pres = dao.getAllPresidents();
 	President president =null;
-	if(submit != null && termNumber !=0){
-		president = dao.getPresident(termNumber);
-	}
-	else if(next != null ){
+		
+	
+	if(next != null ){
 		president = dao.getNextPres(termNumber);
 	}
 	else if(previous != null ){
 		president = dao.getPreviousPres(termNumber);
 	}
+	else{
+		president = dao.getPresident(termNumber);
+	}
 	
 	
+		System.out.println(president.getFirstName());
 		request.setAttribute("president", president);
 		request.getRequestDispatcher("president.jsp").forward(request, response);
 	}
