@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import data.President;
 import data.PresidentDaoListImpl;
+
 /**
  * Servlet implementation class PresidentServlet
  */
@@ -20,52 +21,52 @@ public class PresidentServlet extends HttpServlet {
 	private PresidentDaoListImpl dao;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	String previous = request.getParameter("previous");
-	String next = request.getParameter("next");
-	String submit = request.getParameter("submit");
-	int termNumber = 0;
-	System.out.println(request.getParameter("term"));
-	President president =null;
-	if(request.getParameter("termNumber")!=null){
-		termNumber = Integer.parseInt(request.getParameter("termNumber"));
-		president = dao.getPresident(termNumber);
-	}
-	else if(request.getParameter("next")!=null || request.getParameter("previous")!=null){
-		if(next != null && next.equals("Next President")){
-			int term = Integer.parseInt(request.getParameter("term"));
-			president = dao.getNextPres(term);
-		}
-		else if(previous != null && previous.equals("Previous President")){
-			int term = Integer.parseInt(request.getParameter("term"));
-			president = dao.getPreviousPres(term);
-		}
-		else{
+		String previous = request.getParameter("previous");
+		String next = request.getParameter("next");
+		String submit = request.getParameter("submit");
+		int termNumber = 0;
+		System.out.println(request.getParameter("term"));
+		President president = null;
+		if (request.getParameter("termNumber") != null) {
+			termNumber = Integer.parseInt(request.getParameter("termNumber"));
 			president = dao.getPresident(termNumber);
+		} else if (request.getParameter("next") != null || request.getParameter("previous") != null) {
+			if (next != null && next.equals("Next President")) {
+				int term = Integer.parseInt(request.getParameter("term"));
+				president = dao.getNextPres(term);
+			} else if (previous != null && previous.equals("Previous President")) {
+				int term = Integer.parseInt(request.getParameter("term"));
+				president = dao.getPreviousPres(term);
+			} else {
+				president = dao.getPresident(termNumber);
+			}
+
 		}
-		
-	}
-	//if they clicked next, next will have a value
-	List <President> pres = dao.getAllPresidents();
+		// if they clicked next, next will have a value
+		List<President> pres = dao.getAllPresidents();
 		System.out.println("next " + next);
 		System.out.println("previous " + previous);
 		System.out.println("termNumber " + termNumber);
-	
-	
+
 		System.out.println(president.getFirstName());
 		request.setAttribute("president", president);
 		request.getRequestDispatcher("president.jsp").forward(request, response);
 	}
-	
+
 	@Override
-	public void init() throws ServletException{
+	public void init() throws ServletException {
 		super.init();
 		dao = new PresidentDaoListImpl(this.getServletContext());
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
