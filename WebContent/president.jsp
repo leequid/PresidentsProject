@@ -20,7 +20,7 @@
 	<c:if test="${president.termNumber != 1}">
 	<form action="getPresident.do" method="get">
 	<input type="hidden" name="term" value="${president.termNumber}" />
-	<button type="submit" name="previous">Previous President</button> 
+	<input type="submit" name="previous" value="Previous President" />
 	</form>
 	</c:if>
 	
@@ -28,15 +28,20 @@
 		<img src="${president.url}" alt="Image of president"/>
 		<ul>
 		<li>Name: ${president.lastName}</li>
-		<%-- <li>${president.name}</li> --%>
 		</ul>
 		</c:if>
 		
 	<c:if test="${president.termNumber != 45}">
 	<form action="getPresident.do" method="get">
 	<input type="hidden" name="term" value="${president.termNumber}" />
-	<button type="submit" name="next">Next President</button> 
+	<input type="submit" name="next" value="Next President" />
 	</form>
 	</c:if>
+	
+	<select>
+		<option value="Republican" name="republican"/>
+		<option value="Repub" name="republican"/>
+		
+	</select>
 </body>
 </html>

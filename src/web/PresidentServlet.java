@@ -27,21 +27,32 @@ public class PresidentServlet extends HttpServlet {
 	String previous = request.getParameter("previous");
 	String next = request.getParameter("next");
 	String submit = request.getParameter("submit");
-	int termNumber = Integer.parseInt(request.getParameter("termNumber"));
-	//if they clicked next, next will have a value
-	List <President> pres = dao.getAllPresidents();
+	int termNumber = 0;
+	System.out.println(request.getParameter("term"));
 	President president =null;
-		
-	
-	if(next != null ){
-		president = dao.getNextPres(termNumber);
-	}
-	else if(previous != null ){
-		president = dao.getPreviousPres(termNumber);
-	}
-	else{
+	if(request.getParameter("termNumber")!=null){
+		termNumber = Integer.parseInt(request.getParameter("termNumber"));
 		president = dao.getPresident(termNumber);
 	}
+	else if(request.getParameter("next")!=null || request.getParameter("previous")!=null){
+		if(next != null && next.equals("Next President")){
+			int term = Integer.parseInt(request.getParameter("term"));
+			president = dao.getNextPres(term);
+		}
+		else if(previous != null && previous.equals("Previous President")){
+			int term = Integer.parseInt(request.getParameter("term"));
+			president = dao.getPreviousPres(term);
+		}
+		else{
+			president = dao.getPresident(termNumber);
+		}
+		
+	}
+	//if they clicked next, next will have a value
+	List <President> pres = dao.getAllPresidents();
+		System.out.println("next " + next);
+		System.out.println("previous " + previous);
+		System.out.println("termNumber " + termNumber);
 	
 	
 		System.out.println(president.getFirstName());
