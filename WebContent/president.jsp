@@ -40,8 +40,10 @@
 	
 	<select>
 		<option value="Republican" name="republican"/>
-		<option value="Repub" name="republican"/>
-		
+		<option value="Democrat" name="democrat"/>
+		<option value="Republican-Democrat" name="republican-democrat"/>
+		<option value="Independent" name="independent"/>
+		<option value="Whig" name="whig"/>
 	</select>
 </body>
 </html>
