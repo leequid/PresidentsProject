@@ -7,19 +7,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>President Web App</title>
+  <link rel="stylesheet" href="master.css">
 </head>
 <body>
 	<h2>The Presidents of the United States</h2>
 	<form action="getPresident.do" method="get">
-	<input type="text" name="termNumber"/>
+	Enter term number: <input type="text" name="termNumber"/>
 	<input type="submit" value="Submit"/>
 	</form>
 	<hr>
 	
+	<c:if test="${president.termNumber != 1}">
+	<form action="getPresident.do" method="get">
+	<input type="hidden" name="term" value="${president.termNumber}" />
 	<button type="submit" name="previous">Previous President</button> 
+	</form>
+	</c:if>
+	
 	<c:if test="${president != null}">
+		<img src="&quot${president.imageUrl}&quot" alt="Image of president"/>
 		${president.info}
 		</c:if>
+		
+	<c:if test="${president.termNumber != 45}">
+	<form action="getPresident.do" method="get">
+	<input type="hidden" name="term" value="${president.termNumber}" />
 	<button type="submit" name="next">Next President</button> 
+	</form>
+	</c:if>
 </body>
 </html>
