@@ -38,12 +38,15 @@
 	</form>
 	</c:if>
 	
+	<form action="getPresident.do" method="get">
 	<select>
-		<option value="Republican" name="republican"/>
-		<option value="Democrat" name="democrat"/>
-		<option value="Republican-Democrat" name="republican-democrat"/>
-		<option value="Independent" name="independent"/>
-		<option value="Whig" name="whig"/>
+		<option value="Republican">Republican</option>
+		<option value="Democrat">Democrat</option>
+		<option value="Republican-Democrat">Republican-Democrat</option>
+		<option value="Independent">Independent</option>
+		<option value="Whig">Whig</option>
 	</select>
+	<input type="submit" value="Submit"/>
+	</form>
 </body>
 </html>
