@@ -49,7 +49,7 @@ public class PresidentDaoListImpl implements PresidentDao {
 	}
 	
 	public void loadPresident(ServletContext context){
-		InputStream is = context.getResourceAsStream("/WEB-INF/presidents.tsv");
+		InputStream is = context.getResourceAsStream("/WEB-INF/president.tsv");
 		System.out.println("test");
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 			System.out.println("test");
