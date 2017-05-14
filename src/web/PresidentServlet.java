@@ -30,10 +30,24 @@ public class PresidentServlet extends HttpServlet {
 		String previous = request.getParameter("previous");
 		String next = request.getParameter("next");
 		String submit = request.getParameter("submit");
+		String filterParty = request.getParameter("filterParty");
+
 		int termNumber = 0;
-		System.out.println(request.getParameter("term"));
 		President president = null;
-		if (request.getParameter("termNumber") != null) {
+		System.out.println("filter party: " + (filterParty != null));
+
+		if (filterParty != null && ((next == null) && (previous == null))
+				&& request.getParameter("termNumber") == null) {
+			System.out.println("initializing:" + filterParty);
+			president = dao.filterPartyPresident(filterParty);
+		} else if (filterParty != null && request.getParameter("termNumber") == null) {
+			if ((!(filterParty.equals("NoFilter"))) && next != null) {
+				System.out.println("infilternext");
+				president = dao.filterPartyNextPresident();
+			} else if ((!(filterParty.equals("NoFilter"))) && previous != null) {
+				president = dao.filterPartyPreviousPresident();
+			}
+		} else if (request.getParameter("termNumber") != null) {
 			termNumber = Integer.parseInt(request.getParameter("termNumber"));
 			president = dao.getPresident(termNumber);
 		} else if (request.getParameter("next") != null || request.getParameter("previous") != null) {
@@ -50,11 +64,6 @@ public class PresidentServlet extends HttpServlet {
 		}
 		// if they clicked next, next will have a value
 		List<President> pres = dao.getAllPresidents();
-		System.out.println("next " + next);
-		System.out.println("previous " + previous);
-		System.out.println("termNumber " + termNumber);
-
-		System.out.println(president.getFirstName());
 		request.setAttribute("president", president);
 		request.getRequestDispatcher("president.jsp").forward(request, response);
 	}

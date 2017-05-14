@@ -17,36 +17,42 @@
 	</form>
 	<hr>
 	
-	<c:if test="${president.termNumber != 1}">
-	<form action="getPresident.do" method="get">
-	<input type="hidden" name="term" value="${president.termNumber}" />
-	<input type="submit" name="previous" value="Previous President" />
-	</form>
-	</c:if>
+
 	
 	<c:if test="${president != null}">
 		<img src="${president.url}" alt="Image of president"/>
 		<ul>
-		<li>Name: ${president.lastName}</li>
-		</ul>
+		<li>Name: ${president.firstName} ${president.lastName}</li>
+		<li>Term: ${president.termNumber}</li>
+		<li>${president.startTerm} - ${president.endTerm}</li>
+		<li>Presidential pet: ${president.pet}</li>
 		</c:if>
 		
 	<c:if test="${president.termNumber != 45}">
 	<form action="getPresident.do" method="get">
+		<c:if test="${president.termNumber != 1}">
+				<!-- 	<form action="getPresident.do" method="get">
+ -->
+				<input type="hidden" name="term" value="${president.termNumber}" />
+	<input type="submit" name="previous" value="Previous President" />
+	<!-- </form> -->
+	</c:if>
 	<input type="hidden" name="term" value="${president.termNumber}" />
 	<input type="submit" name="next" value="Next President" />
-	</form>
-	</c:if>
-	
-	<form action="getPresident.do" method="get">
-	<select>
+		<select name="filterParty">
+		<option value="NoFilter">No-Filter</option>
 		<option value="Republican">Republican</option>
 		<option value="Democrat">Democrat</option>
 		<option value="Republican-Democrat">Republican-Democrat</option>
 		<option value="Independent">Independent</option>
 		<option value="Whig">Whig</option>
 	</select>
-	<input type="submit" value="Submit"/>
+	<input type="submit" value="Filter"/>
 	</form>
+	</c:if>
+	
+<!-- 	<form action="presFilter.do" method="get">
+
+	</form> -->
 </body>
 </html>

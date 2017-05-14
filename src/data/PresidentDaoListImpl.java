@@ -11,6 +11,8 @@ import javax.servlet.ServletContext;
 
 public class PresidentDaoListImpl implements PresidentDao {
 	private List<President> presList = new ArrayList<>();
+	private List<President> presFilteredList;
+	private int index=0;
 	
 	
 	public List<President> getAllPresidents(){
@@ -33,6 +35,28 @@ public class PresidentDaoListImpl implements PresidentDao {
 		else{
 			return presList.get(0);
 		}
+	}
+	
+	public President filterPartyPresident(String party){
+		index = 0;
+
+			presFilteredList = new ArrayList<>();
+
+		for (President president : presList) {
+			if(president.getParty().equals(party)){
+				presFilteredList.add(president);
+			}
+		}
+		return presFilteredList.get(index);
+	}
+	
+	public President filterPartyPreviousPresident(){
+		return presFilteredList.get(--index);
+		
+	}
+	public President filterPartyNextPresident(){
+		return presFilteredList.get(++index);
+		
 	}
 	
 	public President getPresident(int term){
