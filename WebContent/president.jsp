@@ -17,12 +17,7 @@
 	</form>
 	<hr>
 	
-	<c:if test="${president.termNumber != 1}">
-	<form action="getPresident.do" method="get">
-	<input type="hidden" name="term" value="${president.termNumber}" />
-	<input type="submit" name="previous" value="Previous President" />
-	</form>
-	</c:if>
+
 	
 	<c:if test="${president != null}">
 		<img src="${president.url}" alt="Image of president"/>
@@ -33,6 +28,13 @@
 		
 	<c:if test="${president.termNumber != 45}">
 	<form action="getPresident.do" method="get">
+		<c:if test="${president.termNumber != 1}">
+				<!-- 	<form action="getPresident.do" method="get">
+ -->
+				<input type="hidden" name="term" value="${president.termNumber}" />
+	<input type="submit" name="previous" value="Previous President" />
+	<!-- </form> -->
+	</c:if>
 	<input type="hidden" name="term" value="${president.termNumber}" />
 	<input type="submit" name="next" value="Next President" />
 		<select name="filterParty">
