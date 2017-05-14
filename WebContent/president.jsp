@@ -35,18 +35,20 @@
 	<form action="getPresident.do" method="get">
 	<input type="hidden" name="term" value="${president.termNumber}" />
 	<input type="submit" name="next" value="Next President" />
-	</form>
-	</c:if>
-	
-	<form action="getPresident.do" method="get">
-	<select>
+		<select name="filterParty">
+		<option value="NoFilter">No-Filter</option>
 		<option value="Republican">Republican</option>
 		<option value="Democrat">Democrat</option>
 		<option value="Republican-Democrat">Republican-Democrat</option>
 		<option value="Independent">Independent</option>
 		<option value="Whig">Whig</option>
 	</select>
-	<input type="submit" value="Submit"/>
+	<input type="submit" value="Filter"/>
 	</form>
+	</c:if>
+	
+<!-- 	<form action="presFilter.do" method="get">
+
+	</form> -->
 </body>
 </html>
