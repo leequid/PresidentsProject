@@ -33,6 +33,7 @@ public class PresidentServlet extends HttpServlet {
 		String next = request.getParameter("next");
 		String submit = request.getParameter("submit");
 		String filterParty = request.getParameter("filterParty");
+		List <String> filterList = dao.getFilterList();
 
 		int termNumber = 0;
 		President president = null;
@@ -67,12 +68,15 @@ public class PresidentServlet extends HttpServlet {
 		// if they clicked next, next will have a value
 		List<President> pres = dao.getAllPresidents();
 		List<President> presFilteredList = dao.getPresFilteredList();
+		System.out.println();
 		if(presFilteredList != null) {
 		for (President p : presFilteredList) {
 			System.out.println(p);
 		}
 		}
 		request.setAttribute("president", president);
+		request.setAttribute("filterParty", filterParty);
+		request.setAttribute("filterList", filterList);
 		request.getRequestDispatcher("president.jsp").forward(request, response);
 	}
 

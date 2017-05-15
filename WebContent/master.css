@@ -35,6 +35,9 @@ ul {
 	text-align: left;
 }
 
+input, option {
+	background-color: white;
+}
 
 div > img:first-child {
 	width: 65%;
@@ -43,6 +46,7 @@ div > img:first-child {
 	border-color: black;
 	border-style: solid;
 	border-width: 8px;
+	background-color: white;
 }
 
 #left_panel {
