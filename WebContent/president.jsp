@@ -39,21 +39,11 @@
 	</c:if>
 	<input type="hidden" name="term" value="${president.termNumber}" />
 	<input type="submit" name="next" value="Next President" />
-		<select name="filterParty">
-		<option
-		value="NoFilter">No-Filter
-		</option>
-		<option
-		value="Republican" selected>Republican</option>
-		<option 
-		value="Democrat" selected>Democrat</option>
-		<option 
-		value="Republican-Democrat" selected>Republican-Democrat</option>
-		<option 
-		value="Independent">Independent</option>
-		<option 
-		value="Whig">Whig</option>
-	</select>
+				<select name="filterParty">
+			<c:forEach var="filter" items="${filterList}">
+				<option value="${filter}" <c:if test="${filterParty != null && filterParty == filter}">selected</c:if>>${filter}</option>
+			</c:forEach>
+		</select> 
 	<input type="submit" value="Filter"/>
 	</form>
 	</c:if>

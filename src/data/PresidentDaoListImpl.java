@@ -13,8 +13,45 @@ public class PresidentDaoListImpl implements PresidentDao {
 	private List<President> presList = new ArrayList<>();
 	private List<President> presFilteredList;
 	private int index=0;
+	private List<String> filterList = new ArrayList<>();
+	{
+		filterList.add("NoFilter");
+		filterList.add("Republican");
+		filterList.add("Democrat");
+		filterList.add("Republican-Democrat");
+		filterList.add("Independent");
+		filterList.add("Whig");
+	}
 	
 	
+	public List<President> getPresList() {
+		return presList;
+	}
+
+	public void setPresList(List<President> presList) {
+		this.presList = presList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public List<String> getFilterList() {
+		return filterList;
+	}
+
+	public void setFilterList(List<String> filterList) {
+		this.filterList = filterList;
+	}
+
+	public void setPresFilteredList(List<President> presFilteredList) {
+		this.presFilteredList = presFilteredList;
+	}
+
 	public List<President> getAllPresidents(){
 		return new ArrayList<President>(presList);
 	}
@@ -77,6 +114,7 @@ public class PresidentDaoListImpl implements PresidentDao {
 	
 	public PresidentDaoListImpl(ServletContext context){
 		loadPresident(context);
+
 	}
 	
 	public void loadPresident(ServletContext context){
