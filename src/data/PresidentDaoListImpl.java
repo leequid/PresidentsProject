@@ -18,7 +18,7 @@ public class PresidentDaoListImpl implements PresidentDao {
 		filterList.add("NoFilter");
 		filterList.add("Republican");
 		filterList.add("Democrat");
-		filterList.add("Republican-Democrat");
+		filterList.add("Democratic-Republican");
 		filterList.add("Independent");
 		filterList.add("Whig");
 	}
@@ -119,9 +119,9 @@ public class PresidentDaoListImpl implements PresidentDao {
 	
 	public void loadPresident(ServletContext context){
 		InputStream is = context.getResourceAsStream("/WEB-INF/president.tsv");
-		System.out.println("test");
+		
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-			System.out.println("test");
+			
 			String record; // Read and discard header line
 			while ((record = reader.readLine()) != null) {
 				String[] col = record.split("\\|");

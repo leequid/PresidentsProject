@@ -34,21 +34,36 @@ public class PresidentServlet extends HttpServlet {
 		String submit = request.getParameter("submit");
 		String filterParty = request.getParameter("filterParty");
 		List <String> filterList = dao.getFilterList();
+		List<President> pres = dao.getAllPresidents();
+		List<President> presFilteredList = dao.getPresFilteredList();
+		
+		int filterIndex =1;
+		int lengthOfFilter=50;
+		
 
 		int termNumber = 0;
+		
 		President president = null;
 		System.out.println("filter party: " + (filterParty != null));
 
 		if (filterParty != null && ((next == null) && (previous == null))
 				&& request.getParameter("termNumber") == null) {
-			System.out.println("initializing:" + filterParty);
 			president = dao.filterPartyPresident(filterParty);
+			presFilteredList = dao.getPresFilteredList();
+			lengthOfFilter = (presFilteredList.size()-1);
+			System.out.println("initialize filter");
+			filterIndex =0 ;
 		} else if (filterParty != null && request.getParameter("termNumber") == null) {
 			if ((!(filterParty.equals("NoFilter"))) && next != null) {
-				System.out.println("infilternext");
+				System.out.println("Next president");
 				president = dao.filterPartyNextPresident();
+				lengthOfFilter = (presFilteredList.size()-1);
+				filterIndex = presFilteredList.indexOf(president);
 			} else if ((!(filterParty.equals("NoFilter"))) && previous != null) {
 				president = dao.filterPartyPreviousPresident();
+				filterIndex = presFilteredList.indexOf(president);
+				lengthOfFilter = (presFilteredList.size()-1);
+				System.out.println("Previous president");
 			}
 		} else if (request.getParameter("termNumber") != null) {
 			termNumber = Integer.parseInt(request.getParameter("termNumber"));
@@ -66,15 +81,13 @@ public class PresidentServlet extends HttpServlet {
 
 		}
 		// if they clicked next, next will have a value
-		List<President> pres = dao.getAllPresidents();
-		List<President> presFilteredList = dao.getPresFilteredList();
-		System.out.println();
-		if(presFilteredList != null) {
-		for (President p : presFilteredList) {
-			System.out.println(p);
-		}
-		}
+
+		
+		System.out.println(filterIndex);
+		System.out.println(lengthOfFilter);
 		request.setAttribute("president", president);
+		request.setAttribute("filterIndex", filterIndex);
+		request.setAttribute("filterListSize", lengthOfFilter);
 		request.setAttribute("filterParty", filterParty);
 		request.setAttribute("filterList", filterList);
 		request.getRequestDispatcher("president.jsp").forward(request, response);
