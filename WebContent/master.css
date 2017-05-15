@@ -1,5 +1,65 @@
 @CHARSET "UTF-8";
 
 * {
-	font-family: sans-serif;
+	font-family: 'Roboto Slab', serif;
+	font-size: 14px;
+	background-color: rgb(183, 40, 40);
+	margin-top: 20px;
+	color:white;
 }
+
+h2 {
+    overflow: hidden;
+    position: auto; 
+    top: 0; 
+    width: 100%; 
+    text-align: center;
+	font-size: 22px;
+	color: black;
+	background-color: white;
+}
+
+/* h2 {
+	text-align: center;
+	font-size: 22px;
+	background-color: white;
+} */
+
+/* #wrap{
+	text-align: left;
+	background-color: rgb(97, 162, 226);
+} */
+
+ul {
+	list-style: none;
+	text-align: left;
+}
+
+
+div > img:first-child {
+	width: 65%;
+	margin: auto;
+	display: block;
+	border-color: black;
+	border-style: solid;
+	border-width: 8px;
+}
+
+#left_panel {
+	float: left; 
+	width: 33%;
+}
+#middle_panel {
+	display: inline-block; 
+	width: 33%;
+}
+#right_panel {
+	float: right; 
+	width: 33%;
+}
+
+#submitButton {
+    background-color: white;
+    color: black;
+}
+
