@@ -37,14 +37,14 @@
         </div>
         <div id="right_panel">
             <form action="getPresident.do" method="get">
-                <c:if test="${president.termNumber != 1 && president != null && filterIndex !=0}">
+                <c:if test="${ president != null && (president.termNumber != 1 ||filterIndex !=0)}">
                     <!--     <form action="getPresident.do" method="get">
  -->
                     <input type="hidden" name="term" value="${president.termNumber}" />
                     <input type="submit" name="previous" value="Previous President" />
                     <!-- </form> -->
                 </c:if>
-                <c:if test="${president.termNumber != 45 && president != null && filterListSize != filterIndex}">
+                <c:if test="${president != null && (president.termNumber != 45 || filterListSize != filterIndex)}">
                     <input type="hidden" name="term" value="${president.termNumber}" />
                     <input type="submit" name="next" value="Next President" />
                 </c:if>
