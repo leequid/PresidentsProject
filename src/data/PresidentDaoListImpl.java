@@ -45,9 +45,16 @@ public class PresidentDaoListImpl implements PresidentDao {
 		for (President president : presList) {
 			if(president.getParty().equals(party)){
 				presFilteredList.add(president);
+//				for (President p : presFilteredList) {
+//					System.out.println(p);
+//				}
 			}
 		}
 		return presFilteredList.get(index);
+	}
+	
+	public List<President> getPresFilteredList(){
+		return presFilteredList;
 	}
 	
 	public President filterPartyPreviousPresident(){

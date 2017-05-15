@@ -105,6 +105,14 @@ public President (){
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("President [termNumber=");
+		builder.append(termNumber);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", middleName=");
+		builder.append(middleName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append("]");
 		return builder.toString();
 	}
 

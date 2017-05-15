@@ -40,12 +40,19 @@
 	<input type="hidden" name="term" value="${president.termNumber}" />
 	<input type="submit" name="next" value="Next President" />
 		<select name="filterParty">
-		<option value="NoFilter">No-Filter</option>
-		<option value="Republican">Republican</option>
-		<option value="Democrat">Democrat</option>
-		<option value="Republican-Democrat">Republican-Democrat</option>
-		<option value="Independent">Independent</option>
-		<option value="Whig">Whig</option>
+		<option
+		value="NoFilter">No-Filter
+		</option>
+		<option
+		value="Republican" selected>Republican</option>
+		<option 
+		value="Democrat" selected>Democrat</option>
+		<option 
+		value="Republican-Democrat" selected>Republican-Democrat</option>
+		<option 
+		value="Independent">Independent</option>
+		<option 
+		value="Whig">Whig</option>
 	</select>
 	<input type="submit" value="Filter"/>
 	</form>

@@ -27,6 +27,8 @@ public class PresidentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
 		String previous = request.getParameter("previous");
 		String next = request.getParameter("next");
 		String submit = request.getParameter("submit");
@@ -64,6 +66,12 @@ public class PresidentServlet extends HttpServlet {
 		}
 		// if they clicked next, next will have a value
 		List<President> pres = dao.getAllPresidents();
+		List<President> presFilteredList = dao.getPresFilteredList();
+		if(presFilteredList != null) {
+		for (President p : presFilteredList) {
+			System.out.println(p);
+		}
+		}
 		request.setAttribute("president", president);
 		request.getRequestDispatcher("president.jsp").forward(request, response);
 	}
