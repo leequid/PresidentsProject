@@ -44,7 +44,7 @@
 	<input type="submit" name="previous" value="Previous President" />
 	<!-- </form> -->
 	</c:if>
-		<c:if test="${president.termNumber != 45}">
+		<c:if test="${president.termNumber != 45 && president != null}">
 	<input type="hidden" name="term" value="${president.termNumber}" />
 	<input type="submit" name="next" value="Next President" />
 	</c:if>
